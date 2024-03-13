@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import { useLockFn } from "ahooks";
-import { CheckCircleOutlineRounded } from "@mui/icons-material";
+import {
+  CheckCircleOutlineRounded,
+  DisplaySettings,
+  Padding,
+} from "@mui/icons-material";
 import {
   alpha,
   Box,
@@ -97,7 +101,7 @@ export const ProxyItem = (props: Props) => {
               },
               backgroundColor: bgcolor,
               marginBottom: "8px",
-              height: "40px",
+              height: "36px",
             };
           },
         ]}

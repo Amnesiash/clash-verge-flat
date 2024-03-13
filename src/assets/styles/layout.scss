@@ -22,27 +22,21 @@
     -ms-user-select: none;
     overflow: hidden;
     border-right: 1px solid var(--divider-color);
+    background-color: var(--layout-color);
+    box-shadow: -3px 0px 5px 0px rgba(0, 0, 0, 0.05) inset;
     // background-color: var(--background-color-alpha);
 
     // $maxLogo: 100px;
 
     .the-logo {
-      position: relative;
-      flex: 1 0 58px;
-      // width: 100%;
       display: flex;
-      height: 100%;
-      padding: 0px 20px;
+      width: 157px;
+      padding: 12px 0px 12px 18px;
+      margin-right: auto;
       flex-direction: column;
       justify-content: center;
       align-items: flex-start;
       align-self: stretch;
-      border-bottom: 1px solid var(--divider-color);
-      // max-width: $maxLogo + 32px;
-      // max-height: $maxLogo;
-      // margin: 0 auto;
-      // padding: 0 auto;
-      // text-align: center;
       box-sizing: border-box;
 
       img,
@@ -71,7 +65,7 @@
       flex: 1 1 80%;
       overflow-y: auto;
       margin-bottom: 0px;
-      padding-top: 4px;
+      padding-top: 12px;
     }
 
     .the-traffic {
@@ -106,7 +100,7 @@
       position: absolute;
       top: 0;
       left: 0;
-      right: 2px;
+      right: 0px;
       bottom: 0px;
     }
   }
@@ -117,7 +111,7 @@
 .unknown {
   &.layout {
     .layout__left {
-      padding-top: 24px;
+      padding-top: 28px;
     }
 
     .layout__left .the-logo {
@@ -125,7 +119,7 @@
     }
 
     .layout__right .the-content {
-      top: 24px;
+      top: 0;
     }
   }
 }
@@ -133,10 +127,10 @@
 .macos {
   &.layout {
     .layout__left {
-      padding-top: 24px;
+      padding-top: 28px;
     }
     .layout__right .the-content {
-      top: 24px;
+      top: 0;
     }
   }
 }

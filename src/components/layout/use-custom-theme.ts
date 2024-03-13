@@ -93,8 +93,18 @@ export const useCustomTheme = () => {
     const scrollColor = mode === "light" ? "#90939980" : "#54545480";
     const dividerColor =
       mode === "light" ? "rgba(0, 0, 0, 0.06)" : "rgba(255, 255, 255, 0.06)";
+    const layoutbgColor =
+      mode === "light"
+        ? "rgba(234, 234, 234, 0.84)"
+        : "rgba(255, 255, 255, 0.06)";
+    const pagesbgColor =
+      mode === "light"
+        ? "rgba(234, 234, 234, 0.80)"
+        : "rgba(255, 255, 255, 0.06)";
 
     const rootEle = document.documentElement;
+    rootEle.style.setProperty("--pages-color", pagesbgColor);
+    rootEle.style.setProperty("--layout-color", layoutbgColor);
     rootEle.style.setProperty("--divider-color", dividerColor);
     rootEle.style.setProperty("--background-color", backgroundColor);
     rootEle.style.setProperty("--selection-color", selectColor);

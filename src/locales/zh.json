@@ -1,11 +1,11 @@
 {
-  "Label-Proxies": "代 理",
-  "Label-Test": "测 试",
-  "Label-Profiles": "订 阅",
-  "Label-Connections": "连 接",
-  "Label-Logs": "日 志",
-  "Label-Rules": "规 则",
-  "Label-Settings": "设 置",
+  "Label-Proxies": "代理",
+  "Label-Test": "测试",
+  "Label-Profiles": "订阅",
+  "Label-Connections": "连接",
+  "Label-Logs": "日志",
+  "Label-Rules": "规则",
+  "Label-Settings": "设置",
 
   "Connections": "连接",
   "Logs": "日志",

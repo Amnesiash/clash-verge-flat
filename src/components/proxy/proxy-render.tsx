@@ -37,17 +37,24 @@ export const ProxyRender = (props: RenderProps) => {
   const enable_group_icon = verge?.enable_group_icon ?? true;
   const [mode] = useRecoilState(atomThemeMode);
   const isDark = mode === "light" ? false : true;
-  const itembackgroundcolor = isDark ? "#282A36" : "#ffffff";
-
+  const itembackgroundcolor = isDark
+    ? "rgba(255, 255, 255, 0.01)"
+    : "rgba(0, 0, 0, 0.01)";
+  const itembordercolor = isDark
+    ? "rgba(0, 0, 0, 0.04)"
+    : "rgba(0, 0, 0, 0.04)";
   if (type === 0 && !group.hidden) {
     return (
       <ListItemButton
         dense
         style={{
           background: itembackgroundcolor,
-          height: "100%",
-          margin: "8px 8px",
-          borderRadius: "8px",
+          height: 54,
+          margin: "12px 20px 8px 20px",
+          border: "1px solid",
+          borderColor: itembordercolor,
+          borderRadius: "6px",
+          padding: "0 10px",
         }}
         onClick={() => onHeadState(group.name, { open: !headState?.open })}
       >
@@ -56,8 +63,12 @@ export const ProxyRender = (props: RenderProps) => {
           group.icon.trim().startsWith("http") && (
             <img
               src={group.icon}
-              height="32px"
-              style={{ marginRight: "12px", borderRadius: "6px" }}
+              height="26px"
+              style={{
+                padding: "3px",
+                marginRight: "6px",
+                borderRadius: "6px",
+              }}
             />
           )}
         {enable_group_icon &&
@@ -65,8 +76,12 @@ export const ProxyRender = (props: RenderProps) => {
           group.icon.trim().startsWith("data") && (
             <img
               src={group.icon}
-              height="32px"
-              style={{ marginRight: "12px", borderRadius: "6px" }}
+              height="26px"
+              style={{
+                padding: "3px",
+                marginRight: "6px",
+                borderRadius: "6px",
+              }}
             />
           )}
         {enable_group_icon &&
@@ -74,7 +89,12 @@ export const ProxyRender = (props: RenderProps) => {
           group.icon.trim().startsWith("<svg") && (
             <img
               src={`data:image/svg+xml;base64,${btoa(group.icon)}`}
-              height="32px"
+              height="26px"
+              style={{
+                padding: "3px",
+                marginRight: "6px",
+                borderRadius: "6px",
+              }}
             />
           )}
         <ListItemText
@@ -180,15 +200,15 @@ export const ProxyRender = (props: RenderProps) => {
 };
 
 const StyledPrimary = styled("span")`
-  font-size: 15px;
-  font-weight: 700;
-  line-height: 1.5;
+  font-size: 13px;
+  line-height: 16px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 `;
 const StyledSubtitle = styled("span")`
-  font-size: 13px;
+  font-size: 11px;
+  line-height: 14px;
   overflow: hidden;
   color: text.secondary;
   text-overflow: ellipsis;
@@ -201,12 +221,12 @@ const ListItemTextChild = styled("span")`
 
 const StyledTypeBox = styled(ListItemTextChild)(({ theme }) => ({
   display: "inline-block",
-  border: "1px solid #ccc",
+  border: "1px solid",
   borderColor: alpha(theme.palette.primary.main, 0.5),
   color: alpha(theme.palette.primary.main, 0.8),
   borderRadius: 4,
   fontSize: 10,
   padding: "0 4px",
-  lineHeight: 1.5,
-  marginRight: "8px",
+  lineHeight: "14px",
+  marginRight: "4px",
 }));
