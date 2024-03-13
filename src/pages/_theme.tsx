@@ -23,7 +23,7 @@ export const defaultDarkTheme = {
   primary_color: "#0A84FF",
   secondary_color: "#FF9F0A",
   primary_text: "#ffffff",
-  background_color: "transparent",
+  background_color: "#000000",
   secondary_text: "#ebebf599",
   info_color: "#0A84FF",
   error_color: "#FF453A",
