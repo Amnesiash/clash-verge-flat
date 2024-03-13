@@ -95,6 +95,7 @@
       // top: 0px;
       // right: 0px;
       height: 28px;
+      width: 100%;
       display: flex;
       // align-items: center;
       justify-content: end;
@@ -118,10 +119,6 @@
   &.layout {
     .layout__left {
       padding-top: 28px;
-    }
-
-    .layout__left .the-logo {
-      flex: 1 0 58px;
     }
 
     .layout__right .the-content {
