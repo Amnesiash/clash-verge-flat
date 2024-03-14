@@ -91,14 +91,10 @@
     // background-color: var(--background-color-alpha);
 
     .the-bar {
-      // position: absolute;
-      // top: 0px;
-      // right: 0px;
       height: 28px;
       width: 100%;
       display: flex;
       background-color: var(--bar-color);
-      // align-items: center;
       justify-content: end;
       box-sizing: border-box;
       z-index: 2;
@@ -133,8 +129,8 @@
     .layout__left {
       padding-top: 28px;
     }
-    .layout__right .the-content {
-      top: 0;
+    .layout__right .the-bar {
+      background-color: transparent;
     }
   }
 }
