@@ -115,7 +115,7 @@ export const ProviderButton = () => {
                 <ListItem
                   sx={{
                     p: 0,
-                    borderRadius: "10px",
+                    borderRadius: "6px",
                     border: "solid 2px var(--divider-color)",
                     mb: 1,
                   }}

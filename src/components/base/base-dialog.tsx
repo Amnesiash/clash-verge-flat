@@ -9,6 +9,7 @@ import {
   type Theme,
 } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
+import { useCustomTheme } from "@/components/layout/use-custom-theme";
 
 interface Props {
   title: ReactNode;
@@ -44,15 +45,26 @@ export const BaseDialog: React.FC<Props> = (props) => {
     disableFooter,
     loading,
   } = props;
+  const { theme } = useCustomTheme();
+  const isDark = theme.palette.mode === "dark";
 
   return (
-    <Dialog open={open} onClose={props.onClose}>
-      <DialogTitle>{title}</DialogTitle>
+    <Dialog
+      open={open}
+      onClose={props.onClose}
+      PaperProps={{
+        sx: {
+          borderRadius: "10px", // 设置圆角大小
+          backgroundColor: isDark ? "#000000" : "#FFFFFF",
+        },
+      }}
+    >
+      <DialogTitle sx={{ padding: "20px" }}>{title}</DialogTitle>
 
       <DialogContent sx={contentSx}>{children}</DialogContent>
 
       {!disableFooter && (
-        <DialogActions>
+        <DialogActions sx={{ padding: "20px" }}>
           {!disableCancel && (
             <Button variant="outlined" onClick={props.onCancel}>
               {cancelBtn}
