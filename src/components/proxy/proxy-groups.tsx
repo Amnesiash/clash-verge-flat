@@ -114,24 +114,34 @@ export const ProxyGroups = (props: Props) => {
   if (mode === "direct") {
     return <BaseEmpty text="Direct Mode" />;
   }
-
+  const MyHeader = () => <h2>List Header</h2>;
   return (
     <Virtuoso
       ref={virtuosoRef}
-      style={{ height: "calc(100% - 20px)" }}
+      style={{ height: "100%" }}
       totalCount={renderList.length}
       increaseViewportBy={256}
       itemContent={(index) => (
-        <ProxyRender
-          key={renderList[index].key}
-          item={renderList[index]}
-          indent={mode === "rule" || mode === "script"}
-          onLocation={handleLocation}
-          onCheckAll={handleCheckAll}
-          onHeadState={onHeadState}
-          onChangeProxy={handleChangeProxy}
-        />
+        <div style={{ marginBottom: "8px" }}>
+          <ProxyRender
+            key={renderList[index].key}
+            item={renderList[index]}
+            indent={mode === "rule" || mode === "script"}
+            onLocation={handleLocation}
+            onCheckAll={handleCheckAll}
+            onHeadState={onHeadState}
+            onChangeProxy={handleChangeProxy}
+          />
+        </div>
       )}
+      components={{
+        Footer: () => {
+          return <div style={{ height: "90px" }}></div>;
+        },
+        Header: () => {
+          return <div style={{ height: "20px" }}></div>;
+        },
+      }}
     />
   );
 };

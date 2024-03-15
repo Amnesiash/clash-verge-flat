@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   background-color: var(--pages-color);
+
   > header {
     display: flex;
     height: 52px;
@@ -16,7 +17,7 @@
   .base-container {
     height: 100%;
     overflow: hidden;
-    // border-radius: 10px;
+    // border-bottom: 10px;
     // border-top-left-radius: var(--border-radius);
 
     > section {
