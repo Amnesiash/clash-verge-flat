@@ -128,14 +128,15 @@ pub fn create_window(app_handle: &AppHandle) {
     .title("Clash Verge")
     .visible(false)
     .fullscreen(false)
-    .min_inner_size(600.0, 520.0);
+    .max_inner_size(720.0, 1080.0)
+    .min_inner_size(720.0, 620.0);
 
     match Config::verge().latest().window_size_position.clone() {
         Some(size_pos) if size_pos.len() == 4 => {
             let size = (size_pos[0], size_pos[1]);
             let pos = (size_pos[2], size_pos[3]);
-            let w = size.0.clamp(600.0, f64::INFINITY);
-            let h = size.1.clamp(520.0, f64::INFINITY);
+            let w = size.0.clamp(720.0, f64::INFINITY);
+            let h = size.1.clamp(620.0, f64::INFINITY);
             builder = builder.inner_size(w, h).position(pos.0, pos.1);
         }
         _ => {
@@ -143,18 +144,18 @@ pub fn create_window(app_handle: &AppHandle) {
             {
                 builder = builder
                     .additional_browser_args("--enable-features=msWebView2EnableDraggableRegions")
-                    .inner_size(800.0, 636.0)
+                    .inner_size(720.0, 636.0)
                     .center();
             }
 
             #[cfg(target_os = "macos")]
             {
-                builder = builder.inner_size(800.0, 642.0).center();
+                builder = builder.inner_size(720.0, 642.0).center();
             }
 
             #[cfg(target_os = "linux")]
             {
-                builder = builder.inner_size(800.0, 642.0).center();
+                builder = builder.inner_size(720.0, 642.0).center();
             }
         }
     };
