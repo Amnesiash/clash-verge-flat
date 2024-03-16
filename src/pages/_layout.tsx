@@ -132,7 +132,7 @@ const Layout = () => {
               : {},
           ]}
         >
-          <div className="layout__left" data-tauri-drag-region="true">
+          <div className="layout__left">
             <div className="the-logo" data-tauri-drag-region="true">
               {!isDark ? <LogoSvg /> : <LogoSvg_dark />}
               {<UpdateButton className="the-newbtn" />}
@@ -157,7 +157,12 @@ const Layout = () => {
 
           <div className="layout__right">
             {
-              <div className="the-bar" data-tauri-drag-region="true">
+              <div className="the-bar">
+                <div
+                  className="the-dragbar"
+                  data-tauri-drag-region="true"
+                  style={{ width: "100%" }}
+                ></div>
                 {OS !== "macos" && <LayoutControl />}
               </div>
             }
