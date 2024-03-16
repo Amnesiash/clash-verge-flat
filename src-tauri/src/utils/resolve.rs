@@ -35,8 +35,6 @@ pub fn find_unused_port() -> Result<u16> {
 
 /// handle something when start app
 pub fn resolve_setup(app: &mut App) {
-    // #[cfg(target_os = "macos")]
-    // app.set_activation_policy(tauri::ActivationPolicy::Accessory);
     let version = app.package_info().version.to_string();
     handle::Handle::global().init(app.app_handle());
     VERSION.get_or_init(|| version.clone());
@@ -142,10 +140,7 @@ pub fn create_window(app_handle: &AppHandle) {
         _ => {
             #[cfg(target_os = "windows")]
             {
-                builder = builder
-                    .additional_browser_args("--enable-features=msWebView2EnableDraggableRegions")
-                    .inner_size(720.0, 636.0)
-                    .center();
+                builder = builder.inner_size(720.0, 636.0).center();
             }
 
             #[cfg(target_os = "macos")]
@@ -162,6 +157,7 @@ pub fn create_window(app_handle: &AppHandle) {
     #[cfg(target_os = "windows")]
     let window = builder
         .decorations(false)
+        .additional_browser_args("--enable-features=msWebView2EnableDraggableRegions --disable-features=OverscrollHistoryNavigation,msExperimentalScrolling")
         .transparent(true)
         .visible(false)
         .build();

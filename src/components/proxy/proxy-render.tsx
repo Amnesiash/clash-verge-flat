@@ -19,6 +19,9 @@ import type { IRenderItem } from "./use-render-list";
 import { useVerge } from "@/hooks/use-verge";
 import { useRecoilState } from "recoil";
 import { atomThemeMode } from "@/services/states";
+import { useEffect, useState } from "react";
+import { convertFileSrc } from "@tauri-apps/api/tauri";
+import { downloadIconCache } from "@/services/cmds";
 
 interface RenderProps {
   item: IRenderItem;
@@ -43,6 +46,24 @@ export const ProxyRender = (props: RenderProps) => {
   const itembordercolor = isDark
     ? "rgba(0, 0, 0, 0.04)"
     : "rgba(0, 0, 0, 0.04)";
+  const [iconCachePath, setIconCachePath] = useState("");
+
+  useEffect(() => {
+    initIconCachePath();
+  }, [group]);
+
+  async function initIconCachePath() {
+    if (group.icon && group.icon.trim().startsWith("http")) {
+      const fileName = getFileName(group.icon);
+      const iconPath = await downloadIconCache(group.icon, fileName);
+      setIconCachePath(convertFileSrc(iconPath));
+    }
+  }
+
+  function getFileName(url: string) {
+    return url.substring(url.lastIndexOf("/") + 1);
+  }
+
   if (type === 0 && !group.hidden) {
     return (
       <ListItemButton
