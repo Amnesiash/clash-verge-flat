@@ -56,7 +56,9 @@ const ProxyPage = () => {
       "0px 0px 2px 0px rgba(0, 0, 0, 0.05) inset, 0px 0px 4px 0px rgba(0, 0, 0, 0.05) inset, 0px 0px 2px 0px rgba(0, 0, 0, 0.05) inset",
     padding: "1px",
     backgroundColor: "rgba(0, 0, 0, 0.01)",
+    gap: "-1px",
   };
+
   const btstylebase = {
     textTransform: "capitalize",
     borderRadius: "5px",
@@ -78,12 +80,44 @@ const ProxyPage = () => {
             {modeList.map((mode) => (
               <Button
                 key={mode}
+                disableRipple={true}
                 variant={mode === curMode ? "contained" : "outlined"}
                 onClick={() => onChangeMode(mode)}
                 sx={{
                   ...btstylebase,
                   backgroundColor: mode === curMode ? "#ffffff" : "#transpant",
-                  border: mode === curMode ? "0.5px solid #000" : "none",
+                  border:
+                    mode === curMode
+                      ? "0.5px solid rgba(0, 0, 0, 0.02)"
+                      : "none",
+                  boxShadow:
+                    mode === curMode
+                      ? "0px 1px 0.75px 0px rgba(0, 0, 0, 0.05), 0px 0.25px 0.25px 0px rgba(0, 0, 0, 0.15)"
+                      : "none",
+                  "&:hover": {
+                    backgroundColor:
+                      mode === curMode ? "#ffffff" : "rgba(0, 0, 0, 0.05)",
+                    boxShadow:
+                      mode === curMode
+                        ? "0px 1px 0.75px 0px rgba(0, 0, 0, 0.05), 0px 0.25px 0.25px 0px rgba(0, 0, 0, 0.15)"
+                        : "none",
+                    border:
+                      mode === curMode
+                        ? "0.5px solid rgba(0, 0, 0, 0.02)"
+                        : "none",
+                  },
+                  "&:active": {
+                    backgroundColor:
+                      mode === curMode ? "#ffffff" : "rgba(0, 0, 0, 0.05)",
+                    boxShadow:
+                      mode === curMode
+                        ? "0px 1px 0.75px 0px rgba(0, 0, 0, 0.05), 0px 0.25px 0.25px 0px rgba(0, 0, 0, 0.15)"
+                        : "none",
+                    border:
+                      mode === curMode
+                        ? "0.5px solid rgba(0, 0, 0, 0.02)"
+                        : "none",
+                  },
                 }}
               >
                 {t(mode)}
