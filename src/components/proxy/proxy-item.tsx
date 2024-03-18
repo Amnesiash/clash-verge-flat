@@ -22,6 +22,7 @@ import {
 import { BaseLoading } from "@/components/base";
 import delayManager from "@/services/delay";
 import { useVerge } from "@/hooks/use-verge";
+import { values } from "lodash-es";
 
 interface Props {
   groupName: string;
@@ -34,20 +35,20 @@ interface Props {
 
 const Widget = styled(Box)(() => ({
   padding: "3px 6px",
-  fontSize: 14,
+  fontSize: 12,
   borderRadius: "4px",
 }));
 
 const TypeBox = styled(Box)(({ theme }) => ({
   display: "inline-block",
   border: "1px solid #ccc",
-  borderColor: alpha(theme.palette.text.secondary, 0.36),
-  color: alpha(theme.palette.text.secondary, 0.42),
-  borderRadius: 4,
+  borderColor: "#00000040",
+  color: "#00000080",
+  borderRadius: "4px",
   fontSize: 10,
   marginRight: "4px",
-  padding: "0 2px",
-  lineHeight: "16px",
+  padding: "1px 4px",
+  lineHeight: "13px",
 }));
 
 export const ProxyItem = (props: Props) => {
@@ -78,7 +79,7 @@ export const ProxyItem = (props: Props) => {
 
   return (
     <Box sx={{ margin: "0 20px" }}>
-      <Box sx={{ margin: "0 12px" }}>
+      <Box sx={{ margin: "0 12px 0 12px" }}>
         <Divider sx={{ borderColor: "rgba(0, 0, 0, 0.04)" }}></Divider>
         <ListItemButton
           dense
@@ -101,13 +102,23 @@ export const ProxyItem = (props: Props) => {
                 "&.Mui-selected": {
                   bgcolor: "transparent",
                 },
+                "&.Mui-selected:hover": {
+                  bgcolor: "transparent",
+                },
+                "&:hover": {
+                  bgcolor: "transparent",
+                },
               };
             },
           ]}
         >
           <Radio
-            disableRipple={true}
+            checked={selected}
+            value={proxy.name}
             onChange={() => onClick?.(proxy.name)}
+            disableRipple={true}
+            size={"small"}
+            sx={{ marginLeft: "-12px" }}
           ></Radio>
           <ListItemText
             title={proxy.name}
@@ -117,7 +128,8 @@ export const ProxyItem = (props: Props) => {
                   sx={{
                     display: "inline-block",
                     marginRight: "8px",
-                    fontSize: "14px",
+                    fontSize: "13px",
+                    lineHeight: "16px",
                     color: "text.primary",
                   }}
                 >
