@@ -72,6 +72,7 @@ export const ProxyRender = (props: RenderProps) => {
           background: itembackgroundcolor,
           height: 54,
           margin: "0 20px",
+          marginBottom: "12px",
           border: "1px solid",
           borderColor: itembordercolor,
           borderRadius: "6px",

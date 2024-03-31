@@ -20,6 +20,8 @@ import { useTranslation } from "react-i18next";
 import { getProxyProviders, proxyProviderUpdate } from "@/services/api";
 import { BaseDialog } from "../base";
 import parseTraffic from "@/utils/parse-traffic";
+import { fromPairs } from "lodash-es";
+import ProviderSvg from "@/assets/image/sfsymbol/proxy/provider.svg?react";
 
 const round = keyframes`
   from { transform: rotate(0deg); }
@@ -60,17 +62,23 @@ export const ProviderButton = () => {
   };
 
   if (!hasProvider) return null;
-
+  const ibstyle = {
+    borderRadius: "6px",
+    height: "28px",
+    width: "29px",
+    padding: 0,
+    "&:hover": { backgroundColor: "rgba(0, 0, 0, 0.05)" },
+    "&:active": { backgroundColor: "rgba(0, 0, 0, 0.10)" },
+  };
   return (
     <>
-      <Button
-        size="small"
-        variant="outlined"
-        sx={{ textTransform: "capitalize" }}
+      <IconButton
+        disableRipple={true}
         onClick={() => setOpen(true)}
+        sx={ibstyle}
       >
-        {t("Provider")}
-      </Button>
+        <ProviderSvg />
+      </IconButton>
 
       <BaseDialog
         open={open}

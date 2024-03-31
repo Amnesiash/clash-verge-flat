@@ -122,17 +122,15 @@ export const ProxyGroups = (props: Props) => {
       totalCount={renderList.length}
       increaseViewportBy={256}
       itemContent={(index) => (
-        <div style={{ marginBottom: "8px" }}>
-          <ProxyRender
-            key={renderList[index].key}
-            item={renderList[index]}
-            indent={mode === "rule" || mode === "script"}
-            onLocation={handleLocation}
-            onCheckAll={handleCheckAll}
-            onHeadState={onHeadState}
-            onChangeProxy={handleChangeProxy}
-          />
-        </div>
+        <ProxyRender
+          key={renderList[index].key}
+          item={renderList[index]}
+          indent={mode === "rule" || mode === "script"}
+          onLocation={handleLocation}
+          onCheckAll={handleCheckAll}
+          onHeadState={onHeadState}
+          onChangeProxy={handleChangeProxy}
+        />
       )}
       components={{
         Footer: () => {

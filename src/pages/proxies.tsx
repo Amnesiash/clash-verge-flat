@@ -2,7 +2,7 @@ import useSWR from "swr";
 import { useEffect, useMemo } from "react";
 import { useLockFn } from "ahooks";
 import { useTranslation } from "react-i18next";
-import { Box, Button, ButtonGroup, Paper } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import {
   closeAllConnections,
   getClashConfig,
@@ -49,6 +49,25 @@ const ProxyPage = () => {
     }
   }, [curMode]);
 
+  //Buttongroup style
+  const boxstyle = {
+    borderRadius: "6px",
+    boxShadow:
+      "0px 0px 2px 0px rgba(0, 0, 0, 0.05) inset, 0px 0px 4px 0px rgba(0, 0, 0, 0.05) inset, 0px 0px 2px 0px rgba(0, 0, 0, 0.05) inset",
+    padding: "1px",
+    backgroundColor: "rgba(0, 0, 0, 0.01)",
+    gap: "-1px",
+  };
+
+  const btstylebase = {
+    textTransform: "capitalize",
+    borderRadius: "5px",
+    padding: "0 16px",
+    color: "rgba(0, 0, 0, 0.85)",
+    fontSize: "13px",
+    height: "21px",
+  };
+
   return (
     <BasePage
       full
@@ -57,19 +76,54 @@ const ProxyPage = () => {
       header={
         <Box display="flex" alignItems="center" gap={1}>
           <ProviderButton />
-
-          <ButtonGroup size="small">
+          <Box sx={boxstyle}>
             {modeList.map((mode) => (
               <Button
                 key={mode}
+                disableRipple={true}
                 variant={mode === curMode ? "contained" : "outlined"}
                 onClick={() => onChangeMode(mode)}
-                sx={{ textTransform: "capitalize" }}
+                sx={{
+                  ...btstylebase,
+                  backgroundColor: mode === curMode ? "#ffffff" : "#transpant",
+                  border:
+                    mode === curMode
+                      ? "0.5px solid rgba(0, 0, 0, 0.02)"
+                      : "none",
+                  boxShadow:
+                    mode === curMode
+                      ? "0px 1px 0.75px 0px rgba(0, 0, 0, 0.05), 0px 0.25px 0.25px 0px rgba(0, 0, 0, 0.15)"
+                      : "none",
+                  "&:hover": {
+                    backgroundColor:
+                      mode === curMode ? "#ffffff" : "rgba(0, 0, 0, 0.05)",
+                    boxShadow:
+                      mode === curMode
+                        ? "0px 1px 0.75px 0px rgba(0, 0, 0, 0.05), 0px 0.25px 0.25px 0px rgba(0, 0, 0, 0.15)"
+                        : "none",
+                    border:
+                      mode === curMode
+                        ? "0.5px solid rgba(0, 0, 0, 0.02)"
+                        : "none",
+                  },
+                  "&:active": {
+                    backgroundColor:
+                      mode === curMode ? "#ffffff" : "rgba(0, 0, 0, 0.05)",
+                    boxShadow:
+                      mode === curMode
+                        ? "0px 1px 0.75px 0px rgba(0, 0, 0, 0.05), 0px 0.25px 0.25px 0px rgba(0, 0, 0, 0.15)"
+                        : "none",
+                    border:
+                      mode === curMode
+                        ? "0.5px solid rgba(0, 0, 0, 0.02)"
+                        : "none",
+                  },
+                }}
               >
                 {t(mode)}
               </Button>
             ))}
-          </ButtonGroup>
+          </Box>
         </Box>
       }
     >
