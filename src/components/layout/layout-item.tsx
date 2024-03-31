@@ -7,6 +7,7 @@ import {
 } from "@mui/material";
 import { useMatch, useResolvedPath, useNavigate } from "react-router-dom";
 import { useVerge } from "@/hooks/use-verge";
+import { round, size } from "lodash-es";
 interface Props {
   to: string;
   children: string;
@@ -15,26 +16,25 @@ interface Props {
 export const LayoutItem = (props: Props) => {
   const { to, children, icon } = props;
   const { verge } = useVerge();
-  const { menu_icon } = verge ?? {};
   const resolved = useResolvedPath(to);
   const match = useMatch({ path: resolved.pathname, end: true });
   const navigate = useNavigate();
 
   return (
-    <ListItem sx={{ py: 0.5, maxWidth: 250, mx: "auto", padding: "4px 0px" }}>
+    <ListItem
+      sx={{
+        padding: "0px",
+        flexDirection: "column",
+        alignItems: "center",
+        marginBottom: 1.5,
+      }}
+    >
       <ListItemButton
         selected={!!match}
         sx={[
           {
-            borderRadius: 2,
-            marginLeft: 1.25,
-            paddingLeft: 1,
-            paddingRight: 1,
-            marginRight: 1.25,
-            "& .MuiListItemText-primary": {
-              color: "text.primary",
-              fontWeight: "700",
-            },
+            padding: "4px 16px",
+            borderRadius: 99,
           },
           ({ palette: { mode, primary } }) => {
             const bgcolor =
@@ -52,20 +52,18 @@ export const LayoutItem = (props: Props) => {
         ]}
         onClick={() => navigate(to)}
       >
-        {(menu_icon === "monochrome" || !menu_icon) && (
-          <ListItemIcon sx={{ color: "text.primary", marginLeft: "6px" }}>
-            {icon[0]}
-          </ListItemIcon>
-        )}
-        {menu_icon === "colorful" && <ListItemIcon>{icon[1]}</ListItemIcon>}
-        <ListItemText
-          sx={{
-            textAlign: "center",
-            marginLeft: menu_icon === "disable" ? "" : "-35px",
-          }}
-          primary={children}
-        />
+        {icon[0]}
       </ListItemButton>
+      <ListItemText
+        disableTypography={true}
+        sx={{
+          fontSize: "12px",
+          letterSpacing: "0.5px",
+          // fontWeight: "700"
+        }}
+        primary={children}
+      />
+      <></>
     </ListItem>
   );
 };
