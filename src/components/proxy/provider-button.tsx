@@ -64,9 +64,13 @@ export const ProviderButton = () => {
   return (
     <>
       <Button
-        size="small"
+        size="medium"
         variant="outlined"
-        sx={{ textTransform: "capitalize" }}
+        sx={{
+          textTransform: "capitalize",
+          position: "absolute",
+          right: "20px",
+        }}
         onClick={() => setOpen(true)}
       >
         {t("Provider")}

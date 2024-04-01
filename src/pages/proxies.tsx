@@ -55,21 +55,35 @@ const ProxyPage = () => {
       contentStyle={{ height: "100%" }}
       title={t("Proxy Groups")}
       header={
-        <Box display="flex" alignItems="center" gap={1}>
-          <ProviderButton />
-
-          <ButtonGroup size="small">
+        <Box
+          display="flex"
+          alignItems="center"
+          gap={1}
+          justifyContent="center"
+          width="100%"
+        >
+          <ButtonGroup size="medium">
             {modeList.map((mode) => (
               <Button
                 key={mode}
                 variant={mode === curMode ? "contained" : "outlined"}
                 onClick={() => onChangeMode(mode)}
-                sx={{ textTransform: "capitalize" }}
+                sx={{
+                  textTransform: "capitalize",
+                  height: "40px",
+                  padding: "0 37.5px",
+                  border: "1px solid #00000085",
+                  borderRadius: "999px",
+                  fontSize: "14px",
+                  fontWeight: "600",
+                  color: "#1D1B20",
+                }}
               >
                 {t(mode)}
               </Button>
             ))}
           </ButtonGroup>
+          <ProviderButton />
         </Box>
       }
     >

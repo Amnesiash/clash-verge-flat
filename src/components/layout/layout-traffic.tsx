@@ -101,10 +101,12 @@ export const LayoutTraffic = () => {
             {...iconStyle}
             color={+up > 0 ? "secondary" : "disabled"}
           />
-          <Typography {...valStyle} color="secondary">
+          <Typography fontSize="12px" {...valStyle} color="secondary">
             {up}
           </Typography>
-          <Typography {...unitStyle}>{upUnit}/s</Typography>
+          <Typography fontSize="12px" {...unitStyle}>
+            {upUnit}/s
+          </Typography>
         </Box>
 
         <Box display="flex" alignItems="center" whiteSpace="nowrap">
@@ -112,10 +114,12 @@ export const LayoutTraffic = () => {
             {...iconStyle}
             color={+down > 0 ? "primary" : "disabled"}
           />
-          <Typography {...valStyle} color="primary">
+          <Typography fontSize="12px" {...valStyle} color="primary">
             {down}
           </Typography>
-          <Typography {...unitStyle}>{downUnit}/s</Typography>
+          <Typography fontSize="12px" {...unitStyle}>
+            {downUnit}/s
+          </Typography>
         </Box>
 
         {displayMemory && (
@@ -126,8 +130,12 @@ export const LayoutTraffic = () => {
             title="Memory Usage"
           >
             <MemoryOutlined {...iconStyle} color="disabled" />
-            <Typography {...valStyle}>{inuse}</Typography>
-            <Typography {...unitStyle}>{inuseUnit}</Typography>
+            <Typography fontSize="12px" {...valStyle}>
+              {inuse}
+            </Typography>
+            <Typography fontSize="12px" {...unitStyle}>
+              {inuseUnit}
+            </Typography>
           </Box>
         )}
       </Box>
