@@ -66,7 +66,7 @@ const ProxyPage = () => {
             {modeList.map((mode) => (
               <Button
                 key={mode}
-                variant={mode === curMode ? "contained" : "outlined"}
+                variant={"outlined"}
                 onClick={() => onChangeMode(mode)}
                 sx={{
                   textTransform: "capitalize",

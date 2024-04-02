@@ -102,7 +102,7 @@ export const useCustomTheme = () => {
     rootEle.style.setProperty("--primary-main", theme.palette.primary.main);
     rootEle.style.setProperty(
       "--background-color-alpha",
-      alpha(theme.palette.primary.main, 0.06)
+      alpha(theme.palette.primary.main, 0.02)
     );
 
     // inject css
